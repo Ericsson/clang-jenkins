@@ -1,0 +1,36 @@
+{
+  "projects": [
+    {
+      "name": "tmux",
+      "url": "https://github.com/tmux/tmux.git",
+      "tag": "3.0",
+      "configure_command": "sh autogen.sh && ./configure --disable-static"
+    },
+    {
+      "name": "Curl",
+      "url": "https://github.com/curl/curl.git",
+      "tag": "curl-7_66_0",
+      "configure_command": "./buildconf && ./configure"
+    },
+    {
+      "name": "Redis",
+      "url": "https://github.com/antirez/redis.git",
+      "tag": "5.0.6"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "baseline",
+      "clang_sa_args": "-Xclang -analyzer-stats"
+    },
+    {
+      "name": "CTU",
+      "clang_sa_args": "-Xclang -analyzer-stats",
+      "analyze_args": "--ctu"
+    }
+  ],
+  "charts": ["Duration", "Result count", "The # of times we inlined a call", "The # of paths explored by the analyzer.", "The # of times we reached inline count maximum", "The # of aborted paths due to reaching the maximum block count in a top level function", "The # of times we reached the max number of steps.", "Lines of code", "The # of steps executed.", "The # of functions at top level.", "The # of getCTUDefinition successfully returned the requested function's body", "The # of imports when the ASTImporter encountered an ODR error", "The # of language mismatches", "The # of language dialect mismatches"],
+  "CodeChecker": {
+    "url": "http://codechecker-buildbot.eastus.cloudapp.azure.com:8004/Default"
+  }
+}

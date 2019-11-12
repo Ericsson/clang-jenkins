@@ -1,0 +1,9 @@
+/*tar.gz
+/jenkins_home/*
+!/jenkins_home/*jenkins*.json
+!/jenkins_home/*.sh
+!/jenkins_home/*.groovy
+.bash_history
+.docker/
+.viminfo
+docker_image/.Dockerfile
