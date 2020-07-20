@@ -5,7 +5,13 @@ USER root
 #RUN echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main" > /etc/apt/sources.list.d/llvm.list
 #RUN wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 # install clang build essentials
-RUN apt-get update && apt-get install -y cmake git build-essential vim python cloc gcovr python-virtualenv python-pip python-dev autotools-dev automake ninja-build libboost-all-dev perl autoconf m4 libtool pkg-config libev-dev libevent-dev libssl-dev bsdmainutils python3 libncurses5-dev doxygen subversion python2.7-dev libedit-dev zlib1g-dev libpcre3-dev clang-4.0 net-tools curl gcc-multilib thrift-compiler bison
+RUN apt-get update && apt-get install -y git build-essential vim python cloc gcovr python-virtualenv python-pip python-dev autotools-dev automake ninja-build libboost-all-dev perl autoconf m4 libtool pkg-config libev-dev libevent-dev libssl-dev bsdmainutils python3 libncurses5-dev doxygen subversion python2.7-dev libedit-dev zlib1g-dev libpcre3-dev clang-4.0 net-tools curl gcc-multilib thrift-compiler bison
+
+# cmake
+RUN wget https://cmake.org/files/v3.18/cmake-3.18.0-Linux-x86_64.sh
+RUN mkdir /opt/cmake
+RUN sh cmake-3.18.0-Linux-x86_64.sh --skip-license --prefix=/opt/cmake
+RUN ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
 # SWIG for LLDB
 # download swig 
