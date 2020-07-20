@@ -3,6 +3,7 @@
 docker run \
   -u $(cat /etc/passwd | grep "clang-jenkins" | cut -d":" -f3-4) \
   -d \
+  --log-opt max-size=500m \
   --restart always \
   --privileged \
   -p 8080:8080 -p 50000:50000 \
