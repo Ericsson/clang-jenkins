@@ -30,4 +30,13 @@ RUN /usr/local/bin/install-plugins.sh git github
 ARG UID
 ARG GID
 RUN sed -i "s/jenkins:x:[0-9]\+:[0-9]\+/jenkins:x:$UID:$GID/g" /etc/passwd
+
+# CodeChecker requires Python >= 3.6
+RUN curl -s https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz  | tar xvz && \
+  cd Python-3.6.8 && \
+  ./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib" && \
+  make install -j8 && \
+  cd .. && \
+  rm -r Python-3.6.8
+
 USER jenkins
